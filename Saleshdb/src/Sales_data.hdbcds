@@ -21,5 +21,6 @@ entity Sales{
 Product_id : String(10);
 Qty_sold : Integer;
 sales_office_id : String(10);
+
 };
 };
