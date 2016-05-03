@@ -1,5 +1,9 @@
 namespace SalesAnalysis.Saleshdb;
 
 context Sales_data{
+ 
+entity Sales_office{
+ key Sales_office_id : String(100);
+};
 
 };
