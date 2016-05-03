@@ -1,0 +1,5 @@
+namespace SalesAnalysis.Saleshdb;
+
+context Sales_data{
+
+};
