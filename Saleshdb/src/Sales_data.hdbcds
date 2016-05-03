@@ -4,6 +4,9 @@ context Sales_data{
  
 entity Sales_office{
  key Sales_office_id : String(100);
+Text : String(200);
+City : String(50);
+State : String(50);
 };
 
 };
