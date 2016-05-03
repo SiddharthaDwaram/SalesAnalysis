@@ -3,13 +3,23 @@ namespace SalesAnalysis.Saleshdb;
 context Sales_data{
  
 entity Sales_office{
- key Sales_office_id : String(100);
-Text : String(200);
+ key Sales_office_id : String(10);
+Description : String(200);
 City : String(50);
 State : String(50);
 };
 
 entity product{
  key product_id: String(30);
+Product_desc : String(200);
+key Sales_office_id : String(10);
+Price : Decimal(8,2);
+};
+
+entity al{
+ key Sales_order_no : String(10);
+Product_id : String(10);
+Qty_sold : Integer;
+sales_office_id : String(10);
 };
 };
