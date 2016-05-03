@@ -16,7 +16,7 @@ key Sales_office_id : String(10);
 Price : Decimal(8,2);
 };
 
-entity al{
+entity Sales{
  key Sales_order_no : String(10);
 Product_id : String(10);
 Qty_sold : Integer;
