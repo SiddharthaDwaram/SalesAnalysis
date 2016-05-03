@@ -9,4 +9,7 @@ City : String(50);
 State : String(50);
 };
 
+entity product{
+ key product_id: String(30);
+};
 };
