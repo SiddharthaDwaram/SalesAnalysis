@@ -1,0 +1,4 @@
+service { 
+ "SalesAnalysis.Saleshdb::CV_salesoffice_sales" as "product_sold"
+ keys generate local "ID" aggregates always (SUM of "Qty_sold");
+}
