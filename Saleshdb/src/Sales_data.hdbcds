@@ -6,4 +6,7 @@ entity Sales_office{
  key Sales_office_id : String(100);
 };
 
+entity product{
+ key product_id: String(30);
+};
 };
