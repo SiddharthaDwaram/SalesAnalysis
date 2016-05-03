@@ -14,16 +14,16 @@
 <calculationViews>
   <calculationView xsi:type="Calculation:ProjectionView" id="product">
     <viewAttributes>
-      <viewAttribute id="Price"><descriptions/><descriptions/>
+      <viewAttribute id="Price"><descriptions/><descriptions/><descriptions/>
         <descriptions defaultDescription="Price"/>
       </viewAttribute>
-      <viewAttribute id="Product_desc"><descriptions/><descriptions/>
+      <viewAttribute id="Product_desc"><descriptions/><descriptions/><descriptions/>
         <descriptions defaultDescription="Product_desc"/>
       </viewAttribute>
-      <viewAttribute id="Sales_office_id"><descriptions/><descriptions/>
+      <viewAttribute id="Sales_office_id"><descriptions/><descriptions/><descriptions/>
         <descriptions defaultDescription="Sales_office_id"/>
       </viewAttribute>
-      <viewAttribute id="product_id"><descriptions/><descriptions/>
+      <viewAttribute id="product_id"><descriptions/><descriptions/><descriptions/>
         <descriptions defaultDescription="product_id"/>
       </viewAttribute>
     </viewAttributes>
@@ -40,16 +40,16 @@
       <comment text=""/>
     </descriptions>
     <viewAttributes>
-      <viewAttribute id="Product_id"><descriptions/><descriptions/>
+      <viewAttribute id="Product_id"><descriptions/><descriptions/><descriptions/>
         <descriptions defaultDescription="Product_id"/>
       </viewAttribute>
-      <viewAttribute id="Qty_sold"><descriptions/><descriptions/>
+      <viewAttribute id="Qty_sold"><descriptions/><descriptions/><descriptions/>
         <descriptions defaultDescription="Qty_sold"/>
       </viewAttribute>
-      <viewAttribute id="Sales_order_no"><descriptions/><descriptions/>
+      <viewAttribute id="Sales_order_no"><descriptions/><descriptions/><descriptions/>
         <descriptions defaultDescription="Sales_order_no"/>
       </viewAttribute>
-      <viewAttribute id="sales_office_id"><descriptions/><descriptions/>
+      <viewAttribute id="sales_office_id"><descriptions/><descriptions/><descriptions/>
         <descriptions defaultDescription="sales_office_id"/>
       </viewAttribute>
     </viewAttributes>
@@ -63,19 +63,19 @@
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="product_sales" joinType="inner">
     <viewAttributes>
-      <viewAttribute id="Sales_office_id"><descriptions/><descriptions/>
+      <viewAttribute id="Sales_office_id"><descriptions/><descriptions/><descriptions/>
         <descriptions defaultDescription="Sales_office_id"/>
       </viewAttribute>
-      <viewAttribute id="Qty_sold"><descriptions/><descriptions/>
+      <viewAttribute id="Qty_sold"><descriptions/><descriptions/><descriptions/>
         <descriptions defaultDescription="Qty_sold"/>
       </viewAttribute>
-      <viewAttribute id="Price"><descriptions/><descriptions/>
+      <viewAttribute id="Price"><descriptions/><descriptions/><descriptions/>
         <descriptions defaultDescription="Price"/>
       </viewAttribute>
       <viewAttribute id="JOIN$product_id$Product_id" hidden="true"/>
     </viewAttributes>
     <calculatedViewAttributes>
-      <calculatedViewAttribute id="CC_Price_quantity" datatype="INTEGER" expressionLanguage="COLUMN_ENGINE">
+      <calculatedViewAttribute id="CC_Price_quantity" datatype="DECIMAL" expressionLanguage="COLUMN_ENGINE" length="8" scale="2">
         <formula>&quot;Price&quot;*&quot;Qty_sold&quot;</formula>
       </calculatedViewAttribute>
     </calculatedViewAttributes>
@@ -109,6 +109,11 @@
     <measure id="CC_Price_quantity" order="3" aggregationType="sum" engineAggregation="count" measureType="simple">
       <descriptions defaultDescription="CC_Price_quantity"/>
       <measureMapping columnObjectName="product_sales" columnName="CC_Price_quantity"/>
+    </measure>
+  
+    <measure id="Qty_sold" order="4" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Qty_sold"/>
+      <measureMapping columnObjectName="product_sales" columnName="Qty_sold"/>
     </measure>
   </baseMeasures>
   <calculatedMeasures/>
