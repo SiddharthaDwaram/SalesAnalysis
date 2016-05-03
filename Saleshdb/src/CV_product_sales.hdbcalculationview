@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="SalesAnalysis.Saleshdb::CV_product_sales" applyPrivilegeType="NONE" dataCategory="CUBE" dimensionType="" schemaVersion="3.0" defaultClient="$$client$$" visibility="reportingEnabled" outputViewType="Aggregation" calculationScenarioType="TREE_BASED" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_product_sales"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="SalesAnalysis.Saleshdb::Sales_data.product">
+    <resourceUri>SalesAnalysis.Saleshdb::Sales_data.product</resourceUri>
+  </DataSource>
+  <DataSource id="SalesAnalysis.Saleshdb::Sales_data.Sales">
+    <resourceUri>SalesAnalysis.Saleshdb::Sales_data.Sales</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="product">
+    <viewAttributes>
+      <viewAttribute id="Price">
+        <descriptions defaultDescription="Price"/>
+      </viewAttribute>
+      <viewAttribute id="Product_desc">
+        <descriptions defaultDescription="Product_desc"/>
+      </viewAttribute>
+      <viewAttribute id="Sales_office_id">
+        <descriptions defaultDescription="Sales_office_id"/>
+      </viewAttribute>
+      <viewAttribute id="product_id">
+        <descriptions defaultDescription="product_id"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="SalesAnalysis.Saleshdb::Sales_data.product">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Price" source="Price"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_desc" source="Product_desc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Sales_office_id" source="Sales_office_id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="product_id" source="product_id"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="sales">
+    <viewAttributes>
+      <viewAttribute id="Product_id">
+        <descriptions defaultDescription="Product_id"/>
+      </viewAttribute>
+      <viewAttribute id="Qty_sold">
+        <descriptions defaultDescription="Qty_sold"/>
+      </viewAttribute>
+      <viewAttribute id="Sales_order_no">
+        <descriptions defaultDescription="Sales_order_no"/>
+      </viewAttribute>
+      <viewAttribute id="sales_office_id">
+        <descriptions defaultDescription="sales_office_id"/>
+      </viewAttribute>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="SalesAnalysis.Saleshdb::Sales_data.Sales">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Product_id" source="Product_id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Qty_sold" source="Qty_sold"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Sales_order_no" source="Sales_order_no"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="sales_office_id" source="sales_office_id"/>
+    </input>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="product_sales" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="Sales_office_id">
+        <descriptions defaultDescription="Sales_office_id"/>
+      </viewAttribute>
+      <viewAttribute id="Qty_sold">
+        <descriptions defaultDescription="Qty_sold"/>
+      </viewAttribute>
+      <viewAttribute id="Price">
+        <descriptions defaultDescription="Price"/>
+      </viewAttribute>
+      <viewAttribute id="JOIN$product_id$Product_id" hidden="true"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="CC_Price_quantity" datatype="VARCHAR" length="1" expressionLanguage="COLUMN_ENGINE">
+        <formula>&quot;Price&quot;*&quot;Qty_sold&quot;</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="product">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Sales_office_id" source="Sales_office_id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Price" source="Price"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$product_id$Product_id" source="product_id"/>
+    </input>
+    <input node="sales">
+      <mapping xsi:type="Calculation:AttributeMapping" target="Qty_sold" source="Qty_sold"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Sales_office_id" source="sales_office_id"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$product_id$Product_id" source="Product_id"/>
+    </input>
+    <joinAttribute name="Sales_office_id"/>
+    <joinAttribute name="JOIN$product_id$Product_id"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="product_sales">
+  <attributes>
+    <attribute id="Sales_office_id" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="Sales_office_id"/>
+      <keyMapping columnObjectName="product_sales" columnName="Sales_office_id"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="Qty_sold" order="2" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Qty_sold"/>
+      <measureMapping columnObjectName="product_sales" columnName="Qty_sold"/>
+    </measure>
+    <measure id="Price" order="3" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Price"/>
+      <measureMapping columnObjectName="product_sales" columnName="Price"/>
+    </measure>
+    <measure id="CC_Price_quantity" order="4" aggregationType="sum" engineAggregation="count" measureType="simple">
+      <descriptions defaultDescription="CC_Price_quantity"/>
+      <measureMapping columnObjectName="product_sales" columnName="CC_Price_quantity"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="product" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="-16" y="315"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape expanded="true" modelObjectName="sales" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="130" y="335"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape expanded="true" modelObjectName="product_sales" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="60" y="215"/>
+      <rectangleSize height="30" width="140"/>
+    </shape>
+    <shape modelObjectName="product" modelObjectNameSpace="product_sales" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+    <shape modelObjectName="sales" modelObjectNameSpace="product_sales" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="250"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
