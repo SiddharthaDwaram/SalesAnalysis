@@ -29,9 +29,7 @@ modules:
   
 
 
-- name: Salesui
-  type: html5
-  path: Salesui
+
 
 resources:
 - name: hdi-container

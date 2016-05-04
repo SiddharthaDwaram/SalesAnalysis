@@ -1,1 +1,0 @@
-{"type":"sap.html5","builders":{"default":"ui5-builder","configs":{}},"runners":{"configs":{}},"attributes":{"mta_module_parent":["/SalesAnalysis"],"sap.watt.common.setting":["{\"generation\":[{\"templateId\":\"hanatemplates.ui5project\",\"templateVersion\":\"1.0.0\",\"dateTimeStamp\":\"Wed, 04 May 2016 04:17:37 GMT\"}]}"]},"mixinTypes":["mtamodule"]}
