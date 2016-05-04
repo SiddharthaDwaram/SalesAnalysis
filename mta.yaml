@@ -16,6 +16,17 @@ modules:
 - name: Salesjs
   type: nodejs
   path: Salesjs
+# ------- dependency on DB  
+  requires:
+    - name: Saleshdb
+    - name: hdi-container
+#---------------- exposes SERVICE URL to consumers
+  provides:
+    - name: Salesjs_api
+      properties:
+        service_url: ${default-url}
+# ----
+  
 
 resources:
 - name: hdi-container

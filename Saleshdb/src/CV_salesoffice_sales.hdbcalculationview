@@ -14,16 +14,16 @@
 <calculationViews>
   <calculationView xsi:type="Calculation:ProjectionView" id="Sales_office">
     <viewAttributes>
-      <viewAttribute id="City">
+      <viewAttribute id="City"><descriptions/>
         <descriptions defaultDescription="City"/>
       </viewAttribute>
-      <viewAttribute id="Description">
+      <viewAttribute id="Description"><descriptions/>
         <descriptions defaultDescription="Description"/>
       </viewAttribute>
-      <viewAttribute id="Sales_office_id">
+      <viewAttribute id="Sales_office_id"><descriptions/>
         <descriptions defaultDescription="Sales_office_id"/>
       </viewAttribute>
-      <viewAttribute id="State">
+      <viewAttribute id="State"><descriptions/>
         <descriptions defaultDescription="State"/>
       </viewAttribute>
     </viewAttributes>
@@ -37,16 +37,16 @@
   </calculationView>
   <calculationView xsi:type="Calculation:ProjectionView" id="Sales">
     <viewAttributes>
-      <viewAttribute id="Product_id">
+      <viewAttribute id="Product_id"><descriptions/>
         <descriptions defaultDescription="Product_id"/>
       </viewAttribute>
-      <viewAttribute id="Qty_sold">
+      <viewAttribute id="Qty_sold"><descriptions/>
         <descriptions defaultDescription="Qty_sold"/>
       </viewAttribute>
-      <viewAttribute id="Sales_order_no">
+      <viewAttribute id="Sales_order_no"><descriptions/>
         <descriptions defaultDescription="Sales_order_no"/>
       </viewAttribute>
-      <viewAttribute id="sales_office_id">
+      <viewAttribute id="sales_office_id"><descriptions/>
         <descriptions defaultDescription="sales_office_id"/>
       </viewAttribute>
     </viewAttributes>
@@ -60,13 +60,13 @@
   </calculationView>
   <calculationView xsi:type="Calculation:JoinView" id="Salesoffice_sales_join" joinType="inner">
     <viewAttributes>
-      <viewAttribute id="Sales_office_id">
+      <viewAttribute id="Sales_office_id"><descriptions/>
         <descriptions defaultDescription="Sales_office_id"/>
       </viewAttribute>
-      <viewAttribute id="Product_id">
+      <viewAttribute id="Product_id"><descriptions/>
         <descriptions defaultDescription="Product_id"/>
       </viewAttribute>
-      <viewAttribute id="Qty_sold">
+      <viewAttribute id="Qty_sold"><descriptions/>
         <descriptions defaultDescription="Qty_sold"/>
       </viewAttribute>
     </viewAttributes>
@@ -84,7 +84,7 @@
 </calculationViews>
 <logicalModel id="Salesoffice_sales_join">
   <attributes>
-    <attribute id="Sales_office_id" order="1" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="Sales_office_id" order="1" displayAttribute="false" attributeHierarchyActive="false" key="true">
       <descriptions defaultDescription="Sales_office_id"/>
       <keyMapping columnObjectName="Salesoffice_sales_join" columnName="Sales_office_id"/>
     </attribute>
