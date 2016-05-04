@@ -1,0 +1,21 @@
+PROCEDURE "SalesAnalysis.Saleshdb::P_Product_Sales" ( )
+   LANGUAGE SQLSCRIPT
+   SQL SECURITY INVOKER
+AS
+BEGIN
+
+
+SELECT   A."product_id",
+		A."Sales_office_id",
+		A."Product_desc",
+		A."Price",
+		B."Qty_sold",
+		(A."Price" * B."Qty_sold") Net_value 
+FROM "SalesAnalysis.Saleshdb::Sales_data.product"  A , 
+     "SalesAnalysis.Saleshdb::Sales_data.Sales" B 
+ where	A."Sales_office_id" = B."sales_office_id"
+AND A."product_id"=B."Product_id"; 
+
+
+
+END
